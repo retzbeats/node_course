@@ -1,0 +1,7 @@
+Notas js
+1. Para ejecutar: nodejs nombredelarchivo.js
+2. Para crear el package.json --> package.json tiene la información del proyecto y las dependencias librerias, usar: npm init 
+3. Para instalar libreria express: npm install express --save  --> el save crea el registro en el package.json en la carpeta node_modules quedan las dependencias (librerias utilizadas), esta instalación de la dependencia es local (en la carpeta del proyecto), se puede hacer global (se puede ejecutar desde la linea de comandos)
+
+
+
