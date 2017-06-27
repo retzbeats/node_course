@@ -1,0 +1,27 @@
+{
+  "name": "nodejs-telmexhub",
+  "version": "0.0.0",
+  "main": "intro.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeismo/nodejs-telmexhub.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codeismo/nodejs-telmexhub/issues"
+  },
+  "homepage": "https://github.com/codeismo/nodejs-telmexhub",
+  "dependencies": {
+    "body-parser": "^1.6.1",
+    "express": "^4.15.3",
+    "express-session": "^1.7.4",
+    "nunjucks": "^1.0.5",
+    "sequelize": "^1.7.9",
+    "sqlite3": "^2.2.4"
+  },
+  "description": ""
+}
