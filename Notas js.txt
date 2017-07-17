@@ -2,6 +2,14 @@ Notas js
 1. Para ejecutar: nodejs nombredelarchivo.js
 2. Para crear el package.json --> package.json tiene la información del proyecto y las dependencias librerias, usar: npm init 
 3. Para instalar libreria express: npm install express --save  --> el save crea el registro en el package.json en la carpeta node_modules quedan las dependencias (librerias utilizadas), esta instalación de la dependencia es local (en la carpeta del proyecto), se puede hacer global (se puede ejecutar desde la linea de comandos)
+4.instalar el cargador de templates nunjucks:  npm install nunjucks --save
+
+4.sudo npm install -g supervisor -->  la dependencia supervisor instalada de forma global permite reiniciar el web server cada vez que se hagan cambios sobre este. //truco para usar supervisor : ln -s /usr/bin/nodejs /usr/bin/node
+5. instalacion de squalize es un ORM (interfaz comun para diferentes DB SQL): npm install sequelize --save
+6. instalacion de driver de DB : 
+npm install sqlite3 --save
+npm install pg --save
+
 
 
 

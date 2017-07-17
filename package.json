@@ -1,27 +1,27 @@
 {
-  "name": "nodejs-telmexhub",
-  "version": "0.0.0",
+  "name": "node_course",
+  "version": "1.0.0",
+  "description": "Node course code",
   "main": "intro.js",
+  "dependencies": {
+    "express": "^4.15.3",
+    "nunjucks": "^3.0.1",
+    "pg": "^6.4.0",
+    "sequelize": "^4.3.1",
+    "sqlite3": "^3.1.8"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codeismo/nodejs-telmexhub.git"
+    "url": "git+https://github.com/retzbeats/node_course.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/codeismo/nodejs-telmexhub/issues"
+    "url": "https://github.com/retzbeats/node_course/issues"
   },
-  "homepage": "https://github.com/codeismo/nodejs-telmexhub",
-  "dependencies": {
-    "body-parser": "^1.6.1",
-    "express": "^4.15.3",
-    "express-session": "^1.7.4",
-    "nunjucks": "^1.0.5",
-    "sequelize": "^1.7.9",
-    "sqlite3": "^2.2.4"
-  },
-  "description": ""
+  "homepage": "https://github.com/retzbeats/node_course#readme"
 }
