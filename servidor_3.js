@@ -14,11 +14,15 @@ nunjucks.configure(__dirname + "/vistas",{
 //(__dirname es una variable que tiene la ruta donde esta ESTE codigo)
 
 app.listen(8080);
-app.get("/articulo",function(req, res){
+// dentro del get lo que se hace es atrapar todos loa accesos a: localhost:8080/articulo/NUMERO
+app.get("/articulo/:articuloId([0-9+])",function(req, res){ //como hago para que la ruta sea dinamica?-> expresiones regulares
 	//se hace la consulta para buscar el primer renglon
-	modelos.Articulo.findById(1).then(function(articulo){//busca el renglon con id 1
+	var articuloId = req.params.articuloId; //req.params da acceso a expresiones dentro de una ruta dinamica
+	//modelos.Articulo.findById(1).then(function(articulo){//busca el renglon con id 1
+	modelos.Articulo.findById(articuloId).then(function(articulo){//busca el renglon con id pasado en la ruta (req.params)
 		//este metodo se ejecuta cuando encuentra algo
-		console.log("Se encontro articulo con el titulo:" + articulo.titulo);
+		//si no encuentra nada el objeto articulo sera NULL
+		//console.log("Se encontro articulo con el titulo:" + articulo.titulo);
 		res.render("articulo.html", { // se coloca dentro para que lo haga con el callback con lo que consulta del disco
 			//asigno el objeto articulo a la propiedad articulo principal
 			articuloPrincipal:articulo
