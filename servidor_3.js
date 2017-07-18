@@ -19,7 +19,7 @@ app.get("/articulo",function(req, res){
 	modelos.Articulo.findById(1).then(function(articulo){//busca el renglon con id 1
 		//este metodo se ejecuta cuando encuentra algo
 		console.log("Se encontro articulo con el titulo:" + articulo.titulo);
-		res.render("articulo.html", { // se coloca dentro para que lo haga con el callback
+		res.render("articulo.html", { // se coloca dentro para que lo haga con el callback con lo que consulta del disco
 			//asigno el objeto articulo a la propiedad articulo principal
 			articuloPrincipal:articulo
 
@@ -33,7 +33,13 @@ app.get("/blog",function(req, res){
 })
 
 app.get("/usuario",function(req, res){
-	res.render("usuario.html")
+	modelos.Usuarios.findById(1).then(function(usuario){
+		console.log("Se encontro usuario: " + usuario.nombre);
+		res.render("usuario.html", {
+			usuarioPrincipal:usuario //el html accede es a la propiedad, en este caso usuarioPrincipal
+
+		})
+	});
 })
 
 app.get("/informes",function(req, res){

@@ -23,15 +23,30 @@ console.log("base lista!!!");
 
 module.exports.PRUEBA = "hola"; //module.exports es un obejto que permite hacer visibles los datos de este archivo
 
-// Aca se va a hacer el mapeo de las tablas
+// Aca se va a hacer el mapeo de las tablas---------------------------------------------------
+// Mapeo de articulos
  var Articulo = sequelize.define("Articulo",{ //este objeto representa la tabla
  	id:{
  		primaryKey:true, //indica a sequelize que esta es la columna con llave primaria
  		type:Sequelize.INTEGER
  	},
  	titulo:Sequelize.TEXT,//le dice a squelize que la columna titulo es una cadena
- 	contenido:Sequelize.TEXT
+ 	contenido:Sequelize.TEXT,
+ 	fecha_creacion:Sequelize.DATE //DATE es para fechas.
 
  },{tableName:"articulos"}); //le dice cual es la tabla de la base de datos asociada a este objeto
 
+ // Mapeo de usuarios
+var Usuarios = sequelize.define("Usuarios",{
+	id:{
+		primaryKey:true,
+		type:Sequelize.INTEGER
+	},
+	nombre:Sequelize.TEXT,
+	email:Sequelize.TEXT,
+	password:Sequelize.TEXT
+},{tableName:"usuarios"}); //le dice cual es la tabla de la base de datos asociada a este objeto)
+
+
  module.exports.Articulo = Articulo; //se exporta la tabla
+ module.exports.Usuarios = Usuarios;

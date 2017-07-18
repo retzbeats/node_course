@@ -7,10 +7,10 @@
 	<body>
 		<h1>Usuario</h1>
 		
-		<p>NOMBRE USUARIO:{{usuario.nombre}}</p>
-		<p>EMAIL:{{usuario.email}}</p>
+		<p>NOMBRE USUARIO:{{usuarioPrincipal.nombre}}</p>
+		<p>EMAIL:{{usuarioPrincipal.email}}</p>
 		
-		<p>biografia:{{usuario.datosUsuario.biografia}}</p>
+		<p>biografia:{{usuarioPrincipal.datosUsuario.biografia}}</p>
 		
 		<h2>articulos del usuario</h2>
 		{%for articulo in usuario.articulos%}
