@@ -33,8 +33,22 @@ app.get("/articulo/:articuloId([0-9+])",function(req, res){ //como hago para que
 })
 
 app.get("/blog",function(req, res){
-	res.render("blog.html")
+	modelos.Articulo.findAll().then(function(articulos){
+		//find all trae todos los renglones de la tabla
+		//articulos es un arreglo de objetos, para recorrerlo se puede usar metodo foreach de javascript
+		//res.render("blog.html",{
+		//articulos:articulos // los articulos encontrados se pasan a la vista con la propiedad articulos
+		//});
+		modelos.Categorias.findAll().then(function(categorias){ // Hay que hacer la otra busqueda anidada por el tema del asincronismo
+			res.render("blog.html",{
+			articulos:articulos,
+			categorias:categorias
+		})
+
+	});
+	});
 })
+		
 
 app.get("/usuario",function(req, res){
 	modelos.Usuarios.findById(1).then(function(usuario){

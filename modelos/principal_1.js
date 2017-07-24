@@ -45,8 +45,18 @@ var Usuarios = sequelize.define("Usuarios",{
 	nombre:Sequelize.TEXT,
 	email:Sequelize.TEXT,
 	password:Sequelize.TEXT
-},{tableName:"usuarios"}); //le dice cual es la tabla de la base de datos asociada a este objeto)
+},{tableName:"usuarios"}); //le dice cual es la tabla de la base de datos asociada a este objeto
+
+// Mapeo de categorias
+var Categorias = sequelize.define("Categorias",{
+	id:{
+		primaryKey:true,
+		type:Sequelize.INTEGER
+	},
+	nombre:Sequelize.TEXT
+},{tableName:"categorias"});
 
 
  module.exports.Articulo = Articulo; //se exporta la tabla
  module.exports.Usuarios = Usuarios;
+ module.exports.Categorias = Categorias
