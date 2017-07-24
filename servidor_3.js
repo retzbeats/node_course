@@ -22,9 +22,12 @@ app.get("/articulo/:articuloId([0-9+])",function(req, res){ //como hago para que
 	//modelos.Articulo.findById(articuloId).then(function(articulo){//busca el renglon con id pasado en la ruta (req.params)
 	modelos.Articulo.find({
 		where:{id:articuloId},
-		include:[{
+		include:[{	//con el include se incluyen los campos que corresponden a mapeos 1-N o N-N
 		model:modelos.Comentario,
 		as:"comentarios"
+		},{
+			model:modelos.Categorias,
+			as:"categorias"
 		}]
 	}).then(function(articulos){
 		//este metodo se ejecuta cuando encuentra algo

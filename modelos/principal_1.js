@@ -76,6 +76,20 @@ Articulo.hasMany(Comentario,{
 	as:"comentarios"
 });
 
+//-------------Mapeo N-N--------------------multiples items en ambas direcciones. se necesita tabla intermedia, 
+//en estos caso el hasMany se reemplaza por belongsToMany
+Articulo.belongsToMany(Categorias,{
+	foreignKey:"articulo_id",
+	as:"categorias",
+	through:"categorias_articulos" //esto referencia la tabla intermedia donde se hace el cruce
+});
+
+Categorias.belongsToMany(Articulo,{
+	foreignKey:"categoria_id",
+	as:"articulos",
+	through:"categorias_articulos"
+});
+
  module.exports.Articulo = Articulo; //se exporta la tabla
  module.exports.Usuarios = Usuarios;
  module.exports.Categorias = Categorias;
