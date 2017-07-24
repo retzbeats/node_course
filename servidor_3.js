@@ -19,18 +19,26 @@ app.get("/articulo/:articuloId([0-9+])",function(req, res){ //como hago para que
 	//se hace la consulta para buscar el primer renglon
 	var articuloId = req.params.articuloId; //req.params da acceso a expresiones dentro de una ruta dinamica
 	//modelos.Articulo.findById(1).then(function(articulo){//busca el renglon con id 1
-	modelos.Articulo.findById(articuloId).then(function(articulo){//busca el renglon con id pasado en la ruta (req.params)
+	//modelos.Articulo.findById(articuloId).then(function(articulo){//busca el renglon con id pasado en la ruta (req.params)
+	modelos.Articulo.find({
+		where:{id:articuloId},
+		include:[{
+		model:modelos.Comentario,
+		as:"comentarios"
+		}]
+	}).then(function(articulos){
 		//este metodo se ejecuta cuando encuentra algo
 		//si no encuentra nada el objeto articulo sera NULL
 		//console.log("Se encontro articulo con el titulo:" + articulo.titulo);
 		res.render("articulo.html", { // se coloca dentro para que lo haga con el callback con lo que consulta del disco
-			//asigno el objeto articulo a la propiedad articulo principal
-			articuloPrincipal:articulo
-
+		//asigno el objeto articulo a la propiedad articulo principal
+		articuloPrincipal:articulos
 		}) 
-	});
+	})
+});
+
 	
-})
+
 
 app.get("/blog",function(req, res){
 	//req.query == LES DA ACCESO A TODOS LOS PARAMETROS
@@ -60,7 +68,13 @@ app.get("/blog",function(req, res){
 		
 
 app.get("/usuario",function(req, res){
-	modelos.Usuarios.findById(1).then(function(usuario){
+	modelos.Usuarios.find({ //la funcion findById no me permite pasar objetos, para eso tengo que usar find
+		where:{id:2},
+		include:[{
+			model:modelos.Articulo,
+			as:"articulos" //igual al usado en principal.js
+		}]
+	}).then(function(usuario){
 		console.log("Se encontro usuario: " + usuario.nombre);
 		res.render("usuario.html", {
 			usuarioPrincipal:usuario //el html accede es a la propiedad, en este caso usuarioPrincipal

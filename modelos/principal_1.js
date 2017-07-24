@@ -56,7 +56,27 @@ var Categorias = sequelize.define("Categorias",{
 	nombre:Sequelize.TEXT
 },{tableName:"categorias"});
 
+//Mapeo de comentarios
+var Comentario = sequelize.define("Comentarios",{
+	id:{
+		primaryKey:true,
+		type:Sequelize.INTEGER
+	},
+	comentario:Sequelize.TEXT
+},{tableName:"comentarios"});
+
+//-------------Mapeo 1-N-----------------con una sola consulta trae todos los elementos asociados a este item
+Usuarios.hasMany(Articulo,{
+	foreignKey:"usuario_id", //es la llave que conecta con la tabla de usuarios (relacion 1-N)
+	as:"articulos" // agrega los articulos como otra propiedad de usuario --> usuario.articulos
+});
+
+Articulo.hasMany(Comentario,{
+	foreignKey:"articulo_id",
+	as:"comentarios"
+});
 
  module.exports.Articulo = Articulo; //se exporta la tabla
  module.exports.Usuarios = Usuarios;
- module.exports.Categorias = Categorias
+ module.exports.Categorias = Categorias;
+ module.exports.Comentario = Comentario
