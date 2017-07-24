@@ -33,7 +33,16 @@ app.get("/articulo/:articuloId([0-9+])",function(req, res){ //como hago para que
 })
 
 app.get("/blog",function(req, res){
-	modelos.Articulo.findAll().then(function(articulos){
+	//req.query == LES DA ACCESO A TODOS LOS PARAMETROS
+	//QUE VIENEN EN EL QUERY STRING
+	//si no se pone el query string de offset
+	//toma el valor de 0
+	var offset = req.query.offset;
+	modelos.Articulo.findAll({
+		limit:3, //sirve para que haga la consulta en la tabla en bloques de 3 (util para visulización)
+		offset:offset // offset sirve para hacer paginación mostrar de a bloques, para hacerlo de forma dinamica con la ruta:querystring
+		//localhost:8080/blog?offset=3
+	}).then(function(articulos){
 		//find all trae todos los renglones de la tabla
 		//articulos es un arreglo de objetos, para recorrerlo se puede usar metodo foreach de javascript
 		//res.render("blog.html",{
